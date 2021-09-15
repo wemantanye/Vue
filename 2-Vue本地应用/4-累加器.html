@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算器</title>
+    <style>
+        .input-num {
+            position: relative;
+            width: 300px;
+            height: 80px;
+            margin: 100px auto;
+        }
+        .num {
+            position: absolute;
+            float: left;
+            left: 100px;
+            width: 100px;
+            height: 60px;
+            background-color: #ccc;
+            line-height: 60px;
+            text-align: center;
+        }
+        button:first-child {
+            position: absolute;
+            float: left;
+            width: 100px;
+            height: 60px;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            font-size: 30px;
+            color: red;
+        }
+        button:last-child {
+            position: absolute;
+            float: left;
+            left: 200px;
+            width: 100px;
+            height: 60px;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            font-size: 30px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 写入html -->
+    <div id="app">
+        <div class="input-num">
+            <!-- 给元素们根据不同的需求绑定不同的事件event -->
+            <button @click="sub">
+                -
+            </button>
+            <div class="num">{{num}}</div>
+            <button @click="add">
+                +
+            </button>
+        </div>
+    </div>
+    <!-- 导入vue开发环境版本 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- 创建vue实例 -->
+    <script>
+        var app = new Vue({
+            // 挂载app为id的元素
+            el:"#app",
+            data:{
+                // 赋予num的初始值
+                num:1
+            },
+            methods: {
+                // 加法运算的函数
+                add:function() {
+                    // console.log('add');
+                    if(this.num<10) {
+                        this.num++;
+                    }else[
+                        alert("别点啦，最大了")
+                    ]
+
+                },
+                // 减法运算的函数
+                sub:function() {
+                    // console.log('sub');
+                    if(this.num>0) {
+                        this.num--;
+                    }else{
+                        alert("别点啦，最小了")
+                    }
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>

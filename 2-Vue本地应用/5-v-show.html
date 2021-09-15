@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-show案例</title>
+</head>
+<body>
+    <!-- 构建html结构 -->
+    <div id="app">
+        <!-- type 设置类型 value 显示的文字 -->
+        <input type="button" value="切换显示状态" @click="changeIsShow">
+        <input type="button" value="累加年龄" @click="addAge">
+        <!-- v-show="true" 如果是真的那么就显示元素，不是就不显示-->
+        <!-- v-show是通过更改display属性 -->
+        <img v-show="isShow" src="../image/yufeng_studio.jpg" alt="">
+        <img v-show="age>=18" src="../image/yufeng_studio.jpg" alt="">
+    </div>
+    <!-- 导入vue开发环境 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- 创建vue实例 -->
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                isShow:false,
+                age:16
+            },
+            methods: {
+                changeIsShow:function(){
+                    this.isShow = !this.isShow;
+                },  
+                addAge:function() {
+                    this.age++;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

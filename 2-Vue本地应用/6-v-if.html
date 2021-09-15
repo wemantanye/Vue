@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-if案例</title>
+</head>
+<body>
+    <!-- 因为v-if本质上是通过操作dom元素来获取显示状态 -->
+    <!-- 因此频繁的切换用v-show 反之则用v-if 相比较来说，v-show切换消耗较小 -->
+    <!-- 构建html环境 -->
+    <div id="app">
+        <input type="button" value="切换显示" @click="toggleIsShow">
+        <p v-if="isShow">雩风前端开发者</p>
+    </div>
+    <!-- 导入vue开发环境 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--创建vue实例p -->
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                isShow:false,
+                temperature:20
+            },
+            methods: {
+                toggleIsShow:function() {
+                    this.isShow = !this.isShow;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

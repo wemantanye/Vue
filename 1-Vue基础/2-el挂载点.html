@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>el 挂载点</title>
+</head>
+<body>
+    <div id="app" class="app">
+        {{ message }}
+        <span> {{message}} </span>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            // 建议使用id选择器，因为基本上是唯一的
+            el:"#app", // el挂载点
+            // el:".app",
+            // el:"div",
+            data:{
+                message:'yufeng'
+            }
+        })
+    </script>
+</body>
+</html>

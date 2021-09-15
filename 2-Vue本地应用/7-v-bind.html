@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-bind案例</title>
+    <style>
+        .active {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- v-bind:src  v-bind:title 选择  为元素绑定事件-->
+        <!-- 缩写：: 或 . (当使用 .prop 修饰符时)  -->
+        <!-- 动态地绑定一个或多个 attribute，或一个组件 prop 到表达式。 -->
+        <img v-bind:src="imgSrc" v-bind:title="im44urewae44gTitle" alt="">
+        <br>
+        <!-- 支持字符串拼接,采用三表达式选择 -->
+        <img :src="imgSrc" alt="" :title="imgTitle+'!!!'" :class="isActive?'active':''" @click="toggleActive">
+        <!-- 使用对象方法 也就是avtive是否生效取决于isActive的值 -->
+        <img :src="imgSrc" alt="" :title="imgTitle+'!!!'" :class="{active:isActive}" @click="toggleActive">
+    </div> 
+    <!-- 导入vue开发环境 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                imgSrc:"../image/yufeng_studio.jpg",
+                imgTitle:"御风",
+                isActive:false
+            },
+            methods:{
+                toggleActive:function() {
+                    // 每当触发该函数的时候就将默认为假的isActive属性取反
+                    this.isActive = !this.isActive;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

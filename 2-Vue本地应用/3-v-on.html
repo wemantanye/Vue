@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-on指令</title>
+</head>
+<body>
+    <!-- html环境搭建 -->
+    <div id="app">
+        <!-- v-on:click 绑定属性值  @click 简写的方式  dbclick 双击触发事件-->
+        <input type="button" value="v-on指令" v-on:click="cook">
+        <input type="button" value="v-on简写" @click="cook">
+        <input type="button" value="双击事件" dbclick="cook">
+        <h2 @click='changeFood'>{{ food }}</h2>
+    </div>
+    <!-- 引入开发环境版本 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- 创建vue实例 -->
+    <script>
+        var app = new Vue({
+            // 选取挂载位置
+            el:"#app",
+            // 数据部分
+            data:{
+                food:"番茄炒鸡蛋"
+            },
+            // 函数部分
+            methods:{
+                cook:function() {
+                    alert("做饭");
+                },
+                changeFood:function(){
+                    // console.log(this.food);
+                    this.food+='好好吃啊!'
+                }
+            },
+        })
+    </script>
+</body>
+</html>

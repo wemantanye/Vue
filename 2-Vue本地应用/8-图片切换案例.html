@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片切换案例</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body,
+        #mask {
+            width: 100%;
+            height: 100%;
+        }
+
+        #mask {
+            background-color: #c9c9c9;
+            position: relative;
+        }
+
+        #mask .center {
+            position: absolute;
+            background-color: #fff;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+        }
+        #mask .center .title {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            height: 56px;
+            top: -61px;
+            left: 0;
+            padding: 5px;
+            padding-left: 10px;
+            padding-bottom: 0;
+            color: rgba(175, 47, 47, 0.8);
+            font-size: 26px;
+            font-weight: normal;
+            background-color: white;
+            padding-right: 50px;
+            z-index: 2;
+        }
+        #mask .center .title img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        #mask .center .title::before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border: 65px solid;
+            border-color: transparent transparent white;
+            top: -65px;
+            right: -65px;
+            z-index: 1;
+        }
+
+        #mask .center > img {
+            display: block;
+            width: 700px;
+            height: 458px;
+        }
+
+        #mask .center a {
+            text-decoration: none;
+            width: 45px;
+            height: 100px;
+            position: absolute;
+            top: 179px;
+            vertical-align: middle;
+            opacity: 0.5;
+        }
+        #mask .center a :hover {
+            opacity: 0.8;
+        }
+
+        #mask .center .left {
+            left: 15px;
+            text-align: left;
+            padding-right: 10px;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        #mask .center .right {
+            right: 15px;
+            text-align: right;
+            padding-left: 10px;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="mask">
+        <div class="center">
+            <h2 class="title">
+                <img src="../image/个人logo.png" id="head_portrait">
+                <span>杨阳羊练习专用<span>
+            </h2>
+            <!-- 图片 -->
+            <img :src="imgArr[index]" alt="">
+            <!-- 左箭头 v-if 根据表达式真假切换元素显示状态 当index就是索引号不等于0的时候，那么就是说就显示左箭头  -->
+            <a href="javascript:void(0)" class="left" v-if="index!=0" @click="prev">
+                <img src="../image/prev.png" alt="">
+            </a>
+            <!-- 右箭头 v-show 当序号大于等于照片数组长度的那么久不显示元素 v-on 简写 @click 绑定事件，点击事件触发下一个索引，递增 -->
+            <a href="javascript:void(0)" class="right" v-show="index<imgArr.length-1" @click="next">
+                <img src="../image/next.png" alt="">
+            </a>
+        </div>
+    </div>
+
+    <!-- 导入vue库 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+    <!-- 创建vue实例 -->
+    <script>
+        var app = new Vue({
+            el:"#mask",
+            data:{
+                // 定义一个数组，数组中表示了其中图片的地址，方便调取
+                imgArr: [
+                    "../image/李焕英宣传海报1.jpg",
+                    "../image/李焕英宣传海报2.jpg",
+                    "../image/李焕英宣传海报3.jpg",
+                ],
+                // 设置数组索引号原始值为0
+                index: 0
+            },
+            methods: {
+                // 写两个函数实现序列号的递增递减，以此可以实现图片的切换
+                prev:function() {
+                    this.index--;
+                },
+                next:function() {
+                    this.index++;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
