@@ -13,7 +13,13 @@
         <input type="button" value="v-on指令" v-on:click="cook">
         <input type="button" value="v-on简写" @click="cook">
         <input type="button" value="双击事件" dbclick="cook">
+        <!-- 给v-on传递参数 -->
+        <input type="button" value="点击" @click="doIt(666,'老铁')">
+        <!-- v-on做事件修饰符 需要跟着.方法 -->
+        <input type="text" @keyup.enter="cook">
         <h2 @click='changeFood'>{{ food }}</h2>
+        <!-- 补充：传递自定义参数 事件修饰符 -->
+
     </div>
     <!-- 引入开发环境版本 -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -34,6 +40,11 @@
                 changeFood:function(){
                     // console.log(this.food);
                     this.food+='好好吃啊!'
+                },
+                doIt:function(p1,p2) {
+                    console.log("做it");
+                    console.log(p1);
+                    console.log(p2);
                 }
             },
         })

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for案例</title>
+</head>
+<body>
+    <!-- v-for 根据数据生成列表结构 -->
+    <div id="app">
+        <input type="button" value="添加数据" @click="add">
+        <input type="button" value="删除数据" @click="remove">
+
+        <ul>
+            <li v-for="(it,index) in arr">
+                {{ index+1 }}黑马程序员校区:{{ it }}
+            </li>
+            <h2 v-for="item in vegetables" v-bind:title="item.name">
+                {{ item.name }}
+            </h2>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                arr:["北京","上海","广州","深圳"],
+                vegetables:[
+                    {name:"西红柿炒鸡蛋"},
+                    {name:"鸡蛋炒西红柿"}
+                ],
+                methods: {
+                    add:function(){
+                        // 添加进vegetables这个数组中
+                        this.vegetables.push({ name:"花菜炒蛋"});
+                    },
+                    remove:function() {
+                        // 从左边删除元素在数组中
+                        this.vegetables.shift();
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
