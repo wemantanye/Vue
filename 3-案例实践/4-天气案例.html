@@ -4,9 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>天气案例</title>
+    <title>雩风天气</title>
+    <link rel="shortcut icon" href="./img/yufeng_studio.jpg" type="image/x-icon">
 </head>
 <body>
-    
+    <div class="wrap" id="app">
+        <div class="search_form">
+          <div class="logo"><img src="img/个人logo2.png" alt="logo" id="logo"></div>
+          <div class="form_group">
+            <input type="text" v-model="city" @keyup.enter="searchWeather" class="input_txt" placeholder="请输入查询的天气">
+            <button class="input_sub" @click="searchWeather">
+              搜 索
+            </button>
+          </div>
+          <div class="hotkey">
+            <a href="javascript:;" @click="changeCity('北京')">北京</a>
+            <a href="javascript:;" @click="changeCity('上海')">上海</a>
+            <a href="javascript:;" @click="changeCity('广州')">广州</a>
+            <a href="javascript:;" @click="changeCity('深圳')">深圳</a>
+          </div>
+        </div>
+        <ul class="weather_list">
+          <li v-for="item in weatherList">
+            <div class="info_type"><span class="iconfont">{{ item.type }}</span></div>
+            <div class="info_temp"> 
+              <b>{{ item.low }}</b>
+              ~
+              <b>{{ item.high }}</b>
+            </div>
+            <div class="info_date"><span>{{ item.date }}</span></div>
+          </li>
+        </ul>
+    </div>
+    <!-- 官方提供的 axios 在线地址 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js"></script>
+    <!-- vue开发环境版本 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- 自己的js文件 -->
+    <script src="./JS/main.js"></script>
+    <!-- 导入css表 -->
+    <link rel="stylesheet" href="./css/index.css">
 </body>
 </html>
